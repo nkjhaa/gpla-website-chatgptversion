@@ -1,28 +1,67 @@
-document.getElementById('membershipForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Plant Leaders Association (GPLA)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Global Plant Leaders Association</h1>
+    <p>Connecting Plant Directors Across the Globe</p>
+  </header>
 
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        title: document.getElementById('title').value,
-        company: document.getElementById('company').value,
-        location: document.getElementById('location').value
-    };
+  <section id="about">
+    <h2>Our Mission</h2>
+    <p>The Global Plant Leaders Association (GPLA) is a professional network dedicated to empowering plant directors worldwide. We aim to share best practices, drive innovation, and strengthen leadership in manufacturing.</p>
+  </section>
 
-    fetch("YOUR_GOOGLE_SCRIPT_URL", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.result === "success") {
-            document.getElementById('membershipForm').reset();
-            document.getElementById('confirmation').style.display = 'block';
-        } else {
-            alert("There was an error submitting your request.");
-        }
-    })
-    .catch(err => alert("Error: " + err));
-});
+  <section id="goals">
+    <h2>Key Goals</h2>
+    <ul>
+      <li>Foster collaboration among plant leaders globally</li>
+      <li>Promote adoption of advanced manufacturing technologies</li>
+      <li>Advocate for operational excellence and sustainability</li>
+      <li>Provide exclusive resources and leadership development</li>
+    </ul>
+  </section>
+
+  <section id="membership">
+    <h2>Request Membership</h2>
+    <form id="membershipForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" />
+
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" required />
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required />
+
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <div id="confirmation" style="display:none; text-align:center; margin-top:20px;">
+      <p>Thank you for your membership request. We will contact you soon.</p>
+      <img src="badge.png" alt="GPLA Member Badge" style="width:200px; margin-top:10px;">
+      <p>You can proudly display this badge on your LinkedIn profile once your membership is approved.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Global Plant Leaders Association. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
